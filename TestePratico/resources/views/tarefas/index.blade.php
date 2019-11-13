@@ -10,6 +10,7 @@
     <link rel='stylesheet' type='text/css' href={{ asset('css/bootstrap.css') }}>
     <link rel='stylesheet' type='text/css' href={{ asset('css/style.css') }}>
     <link rel="shortcut icon" href={{ asset('img/mobapps.png') }} />
+    
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
     <style>
@@ -33,11 +34,16 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-        <span class="navbar-brand mb-0 h1">Gerenciador de tarefas</span>
-    </nav>
-    <!-- /Navbar -->
+<nav class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                Gerenciador de tarefas
+                </a>
+                
+
+                
+            </div>
+        </nav>
 
     <div class="container-fluid">
         <div class="card" style="margin-top:3%">
