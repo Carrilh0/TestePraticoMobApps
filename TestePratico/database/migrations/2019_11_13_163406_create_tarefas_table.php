@@ -14,8 +14,17 @@ class CreateTarefasTable extends Migration
     public function up()
     {
         Schema::create('tarefas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string('nome');
             $table->timestamps();
+
+            $table->integer('status_id')->unsigned();
+            $table->foreign('status_id')->references('id')->on('statuses');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->engine = 'InnoDB';
         });
     }
 
