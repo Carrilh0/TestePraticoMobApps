@@ -42,7 +42,7 @@
             </div>
 
             <div class="float-right">
-                <a class="btn btn-lg fas fa-power-off" href="{{Auth::Logout()}}" style="color: white;"></a>
+                <a class="btn btn-lg fas fa-power-off" href="{{route('logout')}}" style="color: white;"></a>
             </div>
 
             <a></a>
@@ -51,6 +51,7 @@
     <div class="container-fluid">
         <div class="card" style="margin-top:3%">
             <div class="card-header">
+                
                     <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}')" class='btn btn-success btn-sm float-right'>
                         Nova Tarefa
                     </button>

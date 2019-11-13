@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\TarefaRepository;
 use App\Repositories\StatusRepository;
 use App\RequestValidations\TarefaValidation;
-
+use Auth;
 
 
 class TarefaController extends Controller
@@ -32,9 +32,10 @@ class TarefaController extends Controller
 
     public function index()
     {
-        $tarefasAFazer = $this->tarefaRepository->tarefas(1, 1);
-        $tarefasEmAndamento = $this->tarefaRepository->tarefas(1, 2);
-        $tarefasConcluidas = $this->tarefaRepository->tarefas(1, 3);
+        $user = Auth::user()->id;
+        $tarefasAFazer = $this->tarefaRepository->tarefas($user, 1);
+        $tarefasEmAndamento = $this->tarefaRepository->tarefas($user, 2);
+        $tarefasConcluidas = $this->tarefaRepository->tarefas($user, 3);
        
         return view('tarefas.index',compact('tarefasAFazer','tarefasEmAndamento','tarefasConcluidas'));
     }
@@ -42,7 +43,7 @@ class TarefaController extends Controller
     public function create()
     {   
         $dados = $this->request->all();
-        $dados['user_id'] = 1;
+        $dados['user_id'] = Auth::user()->id;;
         $this->tarefaRepository->create($dados);
         return redirect()->back();
     }
