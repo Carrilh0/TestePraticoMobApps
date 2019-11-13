@@ -57,6 +57,15 @@ class TarefaController extends Controller
         return redirect()->back();
     }
 
+    public function delete($id)
+    {
+        $tarefa = $this->tarefaRepository->tarefaPorId($id);
+
+        $this->tarefaRepository->delete($tarefa);
+        
+        return redirect()->back();
+    }
+
     public function modalCadastrarEditar($idTarefa = false)
     {
         $tarefa = null;

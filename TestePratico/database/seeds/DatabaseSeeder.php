@@ -11,6 +11,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $listaStatus = ['A fazer', 'Em andamento', 'Concluido'];
+    	foreach ($listaStatus as $statu) {
+    		$status = new Status();
+    		if ($status->all()->count() < 1) {
+    			$status->create(['nome' => $statu]);
+    		}
+    	}
+
+    	$listaUsuario = [
+    		'name' => 'Admin',
+    		'email' => 'admin@admin.com',
+    		'password' => bcrypt('admin')
+    	];
+
+    	$user = new User();
+    	if ($user->all()->count() < 1) {
+    		$user->create($listaUsuario);
+    	}
     }
 }

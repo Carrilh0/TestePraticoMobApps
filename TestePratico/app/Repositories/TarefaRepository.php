@@ -35,4 +35,9 @@ class TarefaRepository
     {
         $tarefa->update($dados);
     }
+
+    public function delete($tarefa)
+    {
+        $tarefa->delete();
+    }
 }

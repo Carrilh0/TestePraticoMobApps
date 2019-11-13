@@ -42,6 +42,10 @@
                                         <tr>                                       
                                             <td class="border-warning mb-3">{{$tarefa->nome}}</td>
                                             <td>
+                                                
+                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
+                                                Excluir
+                                                </button>
                                                 <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
@@ -66,6 +70,9 @@
                                         <tr>
                                             <td class="border-primary mb-3">{{$tarefa->nome}}</td>
                                             <td>
+                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
+                                                Excluir
+                                                </button>
                                                 <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
@@ -93,6 +100,9 @@
                                             <tr>
                                                 <td class="border-success mb-3">{{$tarefa->nome}}</td>
                                                 <td>
+                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
+                                                Excluir
+                                                </button>
                                                 <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
@@ -129,6 +139,28 @@
     </div>
 </div>
 
+<!-- Modal de deletar tarefa -->
+<div class="modal fade" id="remover" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" data-backdrop="static">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title " >ATENÇÃO</h3>
+            </div>
+        <div class="modal-body">
+        
+        <h4>Tem certeza de que deseja excluir o item selecionado?</h4>
+    </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+          <a href="#" id="href" class="btn btn-danger">Sim</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript"  src="{{asset('js/jquery.min.js')}}" ></script>
 <script type="text/javascript"  src="{{asset('js/bootstrap.min.js')}}" ></script>
 
@@ -148,6 +180,13 @@
         $('#modal-body-content').load(url);
     }
 
+    function confirmarExclusao(id)
+    {
+        url = "/deletar/" + id;
+        alert(id)
+        $('#href').attr('href', url);  
+        $("#remover").modal('show');
+    }
 </script>
 
 </body>

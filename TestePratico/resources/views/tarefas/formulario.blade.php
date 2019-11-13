@@ -8,7 +8,7 @@
 	  	<div class="col-md-6">
 			<div class="form-group">
 			    <label for="nome">Nome *</label>
-			    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome da empresa!" 
+			    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite a tarefa!" 
 			    value="{{isset($tarefa->nome) ? $tarefa->nome : ''}}">
 			</div>
 		</div>
@@ -39,34 +39,22 @@
 
 
 		<div class="col-md-12" style="text-align:right">
-			<button type="submit" class="btn btn-success" id="salvar-empresa" style="float-right">Salvar</button>
+			<button type="submit" class="btn btn-success" id="salvar-tarefa" style="float-right">Salvar</button>
 		</div>
 
 		<div class="modal-footer"></div>
 	</div>
 </form>
-
+<script type="text/javascript"  src="{{asset('js/jquery.min.js')}}" ></script>
 <script>
 	$(document).ready(function() {
-		$('#salvar-empresa').click(function() {
+		$('#salvar-tarefa').click(function() {
+			
 			if ($('#nome').val() == '') {
-				modalValidacao("Ò campo Nome é obrigatório!"); 
+				modalValidacao("O campo Nome é obrigatório!"); 
 				return false;
-
-			} else if ($('#email').val() == '') {
-				modalValidacao("Ò campo E-mail é obrigatório!"); 
-				return false;
-
-			}  else if ( ! emailValido($('#email').val())) {
-				modalValidacao("Digite um E-mail valido!"); 
-				return false;
-
-			} else if ($('#cnpj').val() == '') {
-				modalValidacao("Ò campo CNPJ é obrigatório!"); 
-				return false;
-
-			}  else if ($('#segmento_id').val() == 'selecione') {
-				modalValidacao("Ò campo Segmento é obrigatório!"); 
+			}  else if ($('#status_id').val() == '') {
+				modalValidacao("O campo Segmento é obrigatório!"); 
 				return false;
 			} else {
 				return true;
