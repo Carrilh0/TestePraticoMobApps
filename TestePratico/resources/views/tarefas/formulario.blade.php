@@ -1,4 +1,4 @@
-<form method="post" action="">
+<form method="post" action="{{route(tarefa.create)}}">
 
     {{ csrf_field() }}
 

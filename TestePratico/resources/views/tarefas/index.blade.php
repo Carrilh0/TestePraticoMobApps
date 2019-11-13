@@ -29,8 +29,9 @@
             </div>
             <div class="col py-3 px-md-5 border">
                 <div class="card-deck">
-                    <div class="card">
-                        <div class="card-header">
+                    
+                    <div class="card border-warning mb-3">
+                        <div class="card-header border-warning mb-3">
                             A fazer
                         </div>
                         <div class="card-body">
@@ -38,22 +39,9 @@
 
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                        @foreach ($tarefasAFazer as $tarefa)
+                                        <td class="border-warning mb-3">{{$tarefa->nome}}</td>
+                                        @endforeach
                                     </tr>
                                 </tbody>
                             </table>
@@ -62,8 +50,8 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card border-primary mb-3">
+                        <div class="card-header border-primary mb-3">
                             Tarefas em andamento
                         </div>
                         <div class="card-body">
@@ -71,22 +59,9 @@
 
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
+                                    @foreach ($tarefasEmAndamento as $tarefa)
+                                        <td class="border-primary mb-3">{{$tarefa->nome}}</td>
+                                    @endforeach
                                     </tr>
                                 </tbody>
                             </table>
@@ -95,8 +70,8 @@
                         </div>
                     </div>
 
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card border-success mb-3">
+                        <div class="card-header border-success mb-3">
                             Tarefas concluidas
                         </div>
                         <div class="card-body">
@@ -106,23 +81,11 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        @foreach ($tarefasConcluidas as $tarefa)
+                                            <td class="border-success mb-3">{{$tarefa->nome}}</td>
+                                        @endforeach
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
 
