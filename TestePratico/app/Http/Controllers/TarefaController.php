@@ -10,4 +10,9 @@ class TarefaController extends Controller
     {
         return view('tarefas.index');
     }
+
+    public function modalCadastrarEditar()
+    {
+        return view('tarefas.formulario');
+    }
 }

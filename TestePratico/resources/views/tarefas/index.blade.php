@@ -23,9 +23,9 @@
     <div class="container-fluid">
         <div class="card radius" style="margin-top: 3%">
             <div class="card-header">
-                    <a href={{route('index')}} class='btn btn-success btn-sm float-right'>
+                    <button onClick="modalCadastrarEditarTarefa('{{route('cadastrarEditar')}}')" class='btn btn-success btn-sm float-right'>
                         Nova Tarefa
-                    </a>
+                    </button>
             </div>
             <div class="col py-3 px-md-5 border">
                 <div class="card-deck">
@@ -133,6 +133,47 @@
             </div>
         </div>
     </div>
+
+<!--Modal Cadastrar e Editar-->
+<div id="modal-cadastrar-editar-tarefa" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" data-backdrop="static">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Tarefa</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+ 
+            <div class="modal-body">
+                <div id="modal-body-content">
+                    <center><h3>Carregando...</h3></center>
+                </div> 
+            </div>   
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"  src="{{asset('js/jquery.min.js')}}" ></script>
+<script type="text/javascript"  src="{{asset('js/bootstrap.min.js')}}" ></script>
+
+<script>
+
+    function modalCadastrarEditarTarefa(rota, id)
+    {
+        var url = null;
+
+        if (id){
+            url = rota + "/" + id
+        }else{
+            url = rota;
+        }
+
+        $("#modal-cadastrar-editar-tarefa").modal('show');
+        $('#modal-body-content').load(url);
+    }
+
+</script>
+
 </body>
 
 </html>
