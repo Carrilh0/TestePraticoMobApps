@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height:100%!important">
 
 <head>
 
@@ -10,6 +10,25 @@
     <link rel='stylesheet' type='text/css' href={{ asset('css/bootstrap.css') }}>
     <link rel='stylesheet' type='text/css' href={{ asset('css/style.css') }}>
     <link rel="shortcut icon" href={{ asset('img/mobapps.png') }} />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-image: linear-gradient(#7edda3, #47e7df)!important;
+            background-repeat:no-repeat;
+        }
+
+        .mini-card {
+            background:white;
+            border-radius:3px;
+            padding:10px;
+            margin-bottom:10px;
+            paddin-top:20px;
+            padding-bottom:20px;
+            box-shadow:silver 1px 2px 1px;
+            color:#666666;
+        }
+    </style>
 
 </head>
 
@@ -21,7 +40,7 @@
     <!-- /Navbar -->
 
     <div class="container-fluid">
-        <div class="card radius" style="margin-top: 3%">
+        <div class="card" style="margin-top:3%">
             <div class="card-header">
                     <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}')" class='btn btn-success btn-sm float-right'>
                         Nova Tarefa
@@ -31,88 +50,58 @@
                 <div class="card-deck">
                     
                     <div class="card border-warning mb-3">
-                        <div class="card-header border-warning mb-3">
+                        <div class="card-header border-warning mb-3" style="background:#fbbb51">
                             A fazer
                         </div>
-                        <div class="card-body">
-                            <table class="table">
-
+                        <div class="card-body" style="background:#e2e4e6">
                                 <tbody>
                                     @foreach ($tarefasAFazer as $tarefa)
-                                        <tr>                                       
-                                            <td class="border-warning mb-3">{{$tarefa->nome}}</td>
-                                            <td>
-                                                
-                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
-                                                Excluir
-                                                </button>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
-                                                Alterar Status
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        <div class="col-md 12 mini-card">
+                                            {{$tarefa->nome}} <br> 
+                                            <small>{{date('d/m/Y', strtotime($tarefa->created_at))}}</small>
+                                            <span style="float:right">
+                                                <button class="btn btn-sm btn-defoult" onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')"><i class="fas fa-pen-square"></i></button>
+                                                <button class="btn btn-sm btn-defoult" onClick="confirmarExclusao({{$tarefa->id}})"><i class="fas fa-trash-alt"></i></button>
+                                            </span>
+                                        </div>
                                     @endforeach
                                 </tbody>
-                            </table>
-
-
                         </div>
                     </div>
 
                     <div class="card border-primary mb-3">
-                        <div class="card-header border-primary mb-3">
+                        <div class="card-header border-primary mb-3" style="background:#51d2fc">
                             Tarefas em andamento
                         </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <tbody>          
-                                    @foreach ($tarefasEmAndamento as $tarefa)
-                                        <tr>
-                                            <td class="border-primary mb-3">{{$tarefa->nome}}</td>
-                                            <td>
-                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
-                                                Excluir
-                                                </button>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
-                                                Alterar Status
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach                                 
-                                </tbody>
-                            </table>
-
-
+                        <div class="card-body" style="background:#e2e4e6">  
+                            @foreach ($tarefasEmAndamento as $tarefa)
+                                <div class="col-md 12 mini-card">
+                                    {{$tarefa->nome}} <br> 
+                                    <small>{{date('d/m/Y', strtotime($tarefa->created_at))}}</small>
+                                    <span style="float:right">
+                                                <button class="btn btn-sm btn-defoult" onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')"><i class="fas fa-pen-square"></i></button>
+                                                <button class="btn btn-sm btn-defoult" onClick="confirmarExclusao({{$tarefa->id}})"><i class="fas fa-trash-alt"></i></button>
+                                    </span> 
+                                </div>    
+                            @endforeach                                 
                         </div>
                     </div>
 
                     <div class="card border-success mb-3">
-                        <div class="card-header border-success mb-3">
+                        <div class="card-header border-success mb-3" style="background:#7edda3">
                             Tarefas concluidas
                         </div>
-                        <div class="card-body">
-                            <table class="table">
-                                <thead class="thead-dark">
-
-                                </thead>
-                                <tbody>                                    
-                                        @foreach ($tarefasConcluidas as $tarefa)
-                                            <tr>
-                                                <td class="border-success mb-3">{{$tarefa->nome}}</td>
-                                                <td>
-                                                <button onClick="confirmarExclusao({{$tarefa->id}})" class='btn btn-danger btn-sm float-right'>
-                                                Excluir
-                                                </button>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
-                                                Alterar Status
-                                                </button>
-                                            </td>
-                                            </tr>
-                                        @endforeach                                                                  
-                                </tbody>
-                            </table>
-
-
+                        <div class="card-body" style="background:#e2e4e6">                        
+                            @foreach ($tarefasConcluidas as $tarefa)
+                                <div class="col-md 12 mini-card">
+                                    {{$tarefa->nome}} <br> 
+                                    <small>{{date('d/m/Y', strtotime($tarefa->created_at))}}</small>
+                                    <span style="float:right">
+                                                <button class="btn btn-sm btn-defoult" onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')"><i class="fas fa-pen-square"></i></button>
+                                                <button class="btn btn-sm btn-defoult" onClick="confirmarExclusao({{$tarefa->id}})"><i class="fas fa-trash-alt"></i></button>
+                                    </span> 
+                                </div>  
+                            @endforeach                                                                  
                         </div>
                     </div>
                 </div>
@@ -183,7 +172,6 @@
     function confirmarExclusao(id)
     {
         url = "/deletar/" + id;
-        alert(id)
         $('#href').attr('href', url);  
         $("#remover").modal('show');
     }

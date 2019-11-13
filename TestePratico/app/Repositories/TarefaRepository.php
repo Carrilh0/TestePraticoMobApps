@@ -18,7 +18,7 @@ class TarefaRepository
     
     public function tarefas($usuarioId, $tarefaId)
     {
-        return $this->tarefa->where('user_id', $usuarioId)->where('status_id', $tarefaId)->get();
+        return $this->tarefa->where('user_id', $usuarioId)->where('status_id', $tarefaId)->orderBy('updated_at','asc')->get();
     }
 
     public function tarefaPorId($id)
