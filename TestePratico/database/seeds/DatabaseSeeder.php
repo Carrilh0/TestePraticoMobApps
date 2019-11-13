@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Status;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,13 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $listaStatus = ['A fazer', 'Em andamento', 'Concluido'];
-    	foreach ($listaStatus as $statu) {
-    		$status = new Status();
-    		if ($status->all()->count() < 1) {
-    			$status->create(['nome' => $statu]);
-    		}
-    	}
+        $status = new Status();
+        if ($status->all()->count() < 1) {
+            $listaStatus = ['A fazer', 'Em andamento', 'Concluido'];
+            foreach ($listaStatus as $statu) {		
+                    $status->create(['nome' => $statu]);
+                }
+         }
 
     	$listaUsuario = [
     		'name' => 'Admin',

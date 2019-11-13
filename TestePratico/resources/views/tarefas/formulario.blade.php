@@ -26,10 +26,10 @@
 				    	    <option value="{{$status->id}}">{{$status->nome}}</option>
 				    	  @endif
 				    	@endforeach
-			    	@else
-						@foreach ($statuses as $status)
-				    	  <option value="{{$status->id}}">{{$status->nome}}</option>
-						@endforeach
+					@else
+						@for ($i = 0; $i < 2; $i++ )
+						  <option value="{{$statuses[$i]->id}}">{{$statuses[$i]->nome}}</option>
+						@endfor
 					@endif
 
 			    </select>

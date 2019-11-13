@@ -38,11 +38,10 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                 Gerenciador de tarefas
-                </a>
-                
-
-                
+                </a>  
             </div>
+
+            <a></a>
         </nav>
 
     <div class="container-fluid">

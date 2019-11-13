@@ -3,8 +3,8 @@
 
 Auth::routes();
 
-//Route::group([ 'middleware' => 'auth'], function()
-//{
+Route::group([ 'middleware' => 'auth'], function()
+{
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -15,4 +15,4 @@ Route::post('/cadastrar','TarefaController@create')->name('tarefa.create');
 Route::post('/editar','TarefaController@update')->name('tarefa.update');
 Route::get('/deletar/{id}','TarefaController@delete')->name('tarefa.delete');
 
-//});
+});
