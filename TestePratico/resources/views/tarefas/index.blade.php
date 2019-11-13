@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="card radius" style="margin-top: 3%">
             <div class="card-header">
-                    <button onClick="modalCadastrarEditarTarefa('{{route('cadastrarEditar')}}')" class='btn btn-success btn-sm float-right'>
+                    <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}')" class='btn btn-success btn-sm float-right'>
                         Nova Tarefa
                     </button>
             </div>
