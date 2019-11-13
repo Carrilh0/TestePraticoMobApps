@@ -8,7 +8,10 @@ class TarefaRepository
 {
     private $tarefa;
 
-    public function __construct(Tarefa $tarefa)
+    public function __construct
+    (
+        Tarefa $tarefa
+    )
     {
         $this->tarefa = $tarefa;
     }
@@ -18,8 +21,18 @@ class TarefaRepository
         return $this->tarefa->where('user_id', $usuarioId)->where('status_id', $tarefaId)->get();
     }
 
-    public function create($dados)
+    public function tarefaPorId($id)
+    {
+        return $this->tarefa->find($id);
+    }
+
+    public function create(array $dados)
     {
         $this->tarefa->create($dados);
+    }
+
+    public function update(Tarefa $tarefa, array $dados)
+    {
+        
     }
 }

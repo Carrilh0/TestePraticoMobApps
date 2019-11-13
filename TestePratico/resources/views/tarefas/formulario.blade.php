@@ -1,19 +1,41 @@
-<form method="post" action="{{route(tarefa.create)}}">
+<form method="post" action="{{route('tarefa.create')}}">
 
     {{ csrf_field() }}
 
-    <input type="hidden" name="id" value="{{isset($empresa->id) ? $empresa->id : ''}}">
+    <input type="hidden" name="id" value="{{isset($tarefa->id) ? $tarefa->id : ''}}">
 
 	<div class="row">
 	  	<div class="col-md-6">
 			<div class="form-group">
 			    <label for="nome">Nome *</label>
 			    <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite o nome da empresa!" 
-			    value="{{isset($empresa->nome) ? $empresa->nome : ''}}">
+			    value="{{isset($tarefa->nome) ? $tarefa->nome : ''}}">
 			</div>
 		</div>
 
-		
+		<div class="col-md-6">
+			<div class="form-group">
+			    <label for="segmento">Status da atividade *</label>
+			    <select class="form-control" name="status_id" id="status_id">
+			    	<option value="" disabled>Selecione um status</option>		    	
+					@if (isset($tarefa->id))
+				    	@foreach ($statuses as $status)
+				    	  @if ($tarefa->id == $status->id)
+				    	    <option value="{{$status->id}}" selected="selected">{{$status->nome}}</option>
+				    	  @else
+				    	    <option value="{{$status->id}}">{{$status->nome}}</option>
+				    	  @endif
+				    	@endforeach
+			    	@else
+						@foreach ($statuses as $status)
+				    	  <option value="{{$status->id}}">{{$status->nome}}</option>
+						@endforeach
+					@endif
+
+			    </select>
+			</div>
+		</div>
+
 
 
 		<div class="col-md-12" style="text-align:right">

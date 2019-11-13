@@ -38,11 +38,16 @@
                             <table class="table">
 
                                 <tbody>
-                                    <tr>
-                                        @foreach ($tarefasAFazer as $tarefa)
-                                        <td class="border-warning mb-3">{{$tarefa->nome}}</td>
-                                        @endforeach
-                                    </tr>
+                                    @foreach ($tarefasAFazer as $tarefa)
+                                        <tr>                                       
+                                            <td class="border-warning mb-3">{{$tarefa->nome}}</td>
+                                            <td>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                Alterar Status
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
@@ -56,13 +61,17 @@
                         </div>
                         <div class="card-body">
                             <table class="table">
-
-                                <tbody>
-                                    <tr>
+                                <tbody>          
                                     @foreach ($tarefasEmAndamento as $tarefa)
-                                        <td class="border-primary mb-3">{{$tarefa->nome}}</td>
-                                    @endforeach
-                                    </tr>
+                                        <tr>
+                                            <td class="border-primary mb-3">{{$tarefa->nome}}</td>
+                                            <td>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                Alterar Status
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach                                 
                                 </tbody>
                             </table>
 
@@ -79,13 +88,17 @@
                                 <thead class="thead-dark">
 
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody>                                    
                                         @foreach ($tarefasConcluidas as $tarefa)
-                                            <td class="border-success mb-3">{{$tarefa->nome}}</td>
-                                        @endforeach
-                                    </tr>
-                                    
+                                            <tr>
+                                                <td class="border-success mb-3">{{$tarefa->nome}}</td>
+                                                <td>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                Alterar Status
+                                                </button>
+                                            </td>
+                                            </tr>
+                                        @endforeach                                                                  
                                 </tbody>
                             </table>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\TarefaRepository;
+use App\Repositories\StatusRepository;
 use App\RequestValidations\TarefaValidation;
 
 
@@ -12,17 +13,20 @@ class TarefaController extends Controller
 {
     private $request;
     private $tarefaRepository;
+    private $statusRepository;
     private $tarefaValidation;
 
     public function __construct
     (
         Request $request, 
         TarefaRepository $tarefaRepository,
+        StatusRepository $statusRepository,
         TarefaValidation $tarefaValidation
     )
     {
         $this->request = $request;
         $this->tarefaRepository = $tarefaRepository;
+        $this->statusRepository = $statusRepository;
         $this->tarefaValidation = $tarefaValidation;
     }
 
@@ -36,12 +40,27 @@ class TarefaController extends Controller
     }
 
     public function create()
-    {
-        $this->tarefaRepository->create($this->request);
+    {   
+        $dados = $this->request->all();
+        $dados['user_id'] = 1;
+        $this->tarefaRepository->create($dados);
+        return redirect()->back();
     }
 
-    public function modalCadastrarEditar()
+    public function update()
     {
-        return view('tarefas.formulario');
+        $tarefa = $this->tarefaRepository->tarefaPorId($id);
+    }
+
+    public function modalCadastrarEditar($idTarefa = false)
+    {
+        $tarefa = null;
+        if($idTarefa){
+            $tarefa = $this->tarefaRepository->tarefaPorId($idTarefa);
+            
+        }
+
+        $statuses = $this->statusRepository->status();
+        return view('tarefas.formulario',compact('statuses','tarefa'));
     }
 }
