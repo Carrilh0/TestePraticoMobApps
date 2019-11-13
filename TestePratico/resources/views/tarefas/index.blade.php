@@ -41,6 +41,10 @@
                 </a>  
             </div>
 
+            <div class="float-right">
+                <a class="btn btn-lg fas fa-power-off" href="{{Auth::Logout()}}" style="color: white;"></a>
+            </div>
+
             <a></a>
         </nav>
 
@@ -99,8 +103,8 @@
                         <div class="card-body" style="background:#e2e4e6">                        
                             @foreach ($tarefasConcluidas as $tarefa)
                                 <div class="col-md 12 mini-card">
-                                    {{$tarefa->nome}} <br> 
-                                    <small>{{date('d/m/Y', strtotime($tarefa->created_at))}}</small>
+                                <strike>{{$tarefa->nome}} <br> 
+                                    <small>{{date('d/m/Y', strtotime($tarefa->created_at))}}</small> </strike>
                                     <span style="float:right">
                                                 <button class="btn btn-sm btn-defoult" onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')"><i class="fas fa-pen-square"></i></button>
                                                 <button class="btn btn-sm btn-defoult" onClick="confirmarExclusao({{$tarefa->id}})"><i class="fas fa-trash-alt"></i></button>
