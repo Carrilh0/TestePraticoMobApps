@@ -49,7 +49,12 @@ class TarefaController extends Controller
 
     public function update()
     {
-        $tarefa = $this->tarefaRepository->tarefaPorId($id);
+        $tarefa = $this->tarefaRepository->tarefaPorId($this->request->id);
+        $dados = $this->request->all();
+
+        $this->tarefaRepository->update($tarefa,$dados);
+
+        return redirect()->back();
     }
 
     public function modalCadastrarEditar($idTarefa = false)

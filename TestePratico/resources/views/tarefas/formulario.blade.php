@@ -1,4 +1,4 @@
-<form method="post" action="{{route('tarefa.create')}}">
+<form method="post" action="{{isset($tarefa->id) ? route('tarefa.update') :route('tarefa.create')}}">
 
     {{ csrf_field() }}
 
@@ -20,7 +20,7 @@
 			    	<option value="" disabled>Selecione um status</option>		    	
 					@if (isset($tarefa->id))
 				    	@foreach ($statuses as $status)
-				    	  @if ($tarefa->id == $status->id)
+				    	  @if ($tarefa->status_id == $status->id)
 				    	    <option value="{{$status->id}}" selected="selected">{{$status->nome}}</option>
 				    	  @else
 				    	    <option value="{{$status->id}}">{{$status->nome}}</option>

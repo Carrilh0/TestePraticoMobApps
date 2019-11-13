@@ -31,8 +31,8 @@ class TarefaRepository
         $this->tarefa->create($dados);
     }
 
-    public function update(Tarefa $tarefa, array $dados)
+    public function update($tarefa, array $dados)
     {
-        
+        $tarefa->update($dados);
     }
 }

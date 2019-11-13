@@ -42,7 +42,7 @@
                                         <tr>                                       
                                             <td class="border-warning mb-3">{{$tarefa->nome}}</td>
                                             <td>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
                                             </td>
@@ -66,7 +66,7 @@
                                         <tr>
                                             <td class="border-primary mb-3">{{$tarefa->nome}}</td>
                                             <td>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
                                             </td>
@@ -93,7 +93,7 @@
                                             <tr>
                                                 <td class="border-success mb-3">{{$tarefa->nome}}</td>
                                                 <td>
-                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->status_id}}')" class='btn btn-success btn-sm float-right'>
+                                                <button onClick="modalCadastrarEditarTarefa('{{route('modal.cadastrar.editar')}}','{{$tarefa->id}}')" class='btn btn-success btn-sm float-right'>
                                                 Alterar Status
                                                 </button>
                                             </td>
@@ -134,12 +134,12 @@
 
 <script>
 
-    function modalCadastrarEditarTarefa(rota, id)
+    function modalCadastrarEditarTarefa(rota, tarefaId)
     {
         var url = null;
 
-        if (id){
-            url = rota + "/" + id
+        if (tarefaId){
+            url = rota + "/" + tarefaId  
         }else{
             url = rota;
         }
