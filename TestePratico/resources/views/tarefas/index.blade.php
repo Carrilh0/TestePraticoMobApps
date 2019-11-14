@@ -230,7 +230,7 @@
                          type: 'get',
                          
                          success: function(data) {
-                            alert('s')
+                            location.reload('3')
                          }
                      });
                 }
