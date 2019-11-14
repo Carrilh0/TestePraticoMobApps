@@ -1,6 +1,6 @@
 # Teste prático para a vaga de estágio MobApps
 
-O tema proposto para o projeto foi o desenvolvimento de um gerenciado de tarefas para o usuario.
+O tema proposto para o projeto foi o desenvolvimento de um gerenciador de tarefas para o usuário.
 
 ## Servidor 
 
