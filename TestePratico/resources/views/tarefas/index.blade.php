@@ -10,7 +10,6 @@
     <link rel='stylesheet' type='text/css' href={{ asset('css/bootstrap.css') }}>
     <link rel='stylesheet' type='text/css' href={{ asset('css/style.css') }}>
     <link rel="shortcut icon" href={{ asset('img/mobapps.png') }} />
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
         integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
@@ -32,9 +31,9 @@
         }
 
         .my-card-body {
-            background:#e2e4e6;
-            overflow-y:scroll;
-            height:400px
+            background: #e2e4e6;
+            overflow-y: scroll;
+            height: 400px
         }
     </style>
 
@@ -197,6 +196,7 @@
 
     <script>
 
+        //Abre o modal para cadastrar ou editar, dependendo apenas dos parametros que forem passados
         function modalCadastrarEditarTarefa(rota, tarefaId) {
             var url = null;
 
@@ -210,39 +210,39 @@
             $('#modal-body-content').load(url);
         }
 
+        //Abre o modal para confirmar e exclusão de alguma tarefa
         function confirmarExclusao(id) {
             url = "/deletar/" + id;
             $('#href').attr('href', url);
             $("#remover").modal('show');
         }
-    </script>
 
-<script type="text/javascript">
-	
-	$(function(){
-       
+        //Sortable para arrastar as tarefas
+        $(function () {
+
             $(".sortable").sortable({
                 connectWith: ".sortable",
                 placeholder: 'dragHelper',
                 scroll: true,
                 revert: true,
                 cursor: "move",
-                
-                stop: function( event, ui ) {
 
-                     $.ajax({
-                         url: '/ajax/editarArrastar/'+ui.item[0].id+'/'+ui.item[0].parentElement.id,
-                         type: 'get',
-                         
-                         success: function(data) {
+                stop: function (event, ui) {
+                    
+                    //Ajax para enviar a posição da coluna e a tarefa arrastada
+                    $.ajax({
+                        url: '/ajax/editarArrastar/' + ui.item[0].id + '/' + ui.item[0].parentElement.id,
+                        type: 'get',
+
+                        success: function (data) {
                             location.reload()
-                         }
-                     });
+                        }
+                    });
                 }
             });
-        }); 
+        });
+    </script>
 
-</script>
 </body>
 
 </html>

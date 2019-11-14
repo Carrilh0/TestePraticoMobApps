@@ -43,7 +43,7 @@ class TarefaController extends Controller
     public function create()
     {   
         $dados = $this->request->all();
-        
+        #Valida se os dados estão de acordo com as regras de validação
         $validate = $this->tarefaValidation->cadastrarValidation($dados);
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
@@ -59,7 +59,7 @@ class TarefaController extends Controller
     {
         $tarefa = $this->tarefaRepository->tarefaPorId($this->request->id);
         $dados = $this->request->all();
-
+        #Valida se os dados estão de acordo com as regras de validação
         $validate = $this->tarefaValidation->cadastrarValidation($dados);
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
@@ -79,18 +79,20 @@ class TarefaController extends Controller
         return redirect()->back();
     }
 
+    #Caso o Id tarefa seja passado, o modal irá ser de editar, por que que será preenchidotodos os campos do formulário 
+    #inclusive o Id para facilita a edição, e caso contrário será um simples modal de cadastro
     public function modalCadastrarEditar($idTarefa = false)
     {
         $tarefa = null;
         if($idTarefa){
             $tarefa = $this->tarefaRepository->tarefaPorId($idTarefa);
-            
         }
 
         $statuses = $this->statusRepository->status();
         return view('tarefas.formulario',compact('statuses','tarefa'));
     }
 
+    #Ajax para a edição de status da tarefa com o sortable 
     public function editarArrastar($id,$status)
     {
         $tarefa = $this->tarefaRepository->tarefaPorId($id);
