@@ -15,5 +15,6 @@ Route::post('/cadastrar','TarefaController@create')->name('tarefa.create');
 Route::post('/editar','TarefaController@update')->name('tarefa.update');
 Route::get('/deletar/{id}','TarefaController@delete')->name('tarefa.delete');
 Route::get('/logout', 'HomeController@logout')->name('logout');
+Route::get('/ajax/editarArrastar/{idTarefa}/{status}', 'TarefaController@editarArrastar');
 
 });

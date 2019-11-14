@@ -43,6 +43,13 @@ class TarefaController extends Controller
     public function create()
     {   
         $dados = $this->request->all();
+        
+        $validate = $this->tarefaValidation->cadastrarValidation($dados);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
+
         $dados['user_id'] = Auth::user()->id;;
         $this->tarefaRepository->create($dados);
         return redirect()->back();
@@ -77,5 +84,12 @@ class TarefaController extends Controller
 
         $statuses = $this->statusRepository->status();
         return view('tarefas.formulario',compact('statuses','tarefa'));
+    }
+
+    public function editarArrastar($id,$status)
+    {
+        $tarefa = $this->tarefaRepository->tarefaPorId($id);
+        $tarefa->status_id = $status;
+        $tarefa->update();
     }
 }

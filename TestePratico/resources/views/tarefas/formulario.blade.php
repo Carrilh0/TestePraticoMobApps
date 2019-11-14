@@ -45,7 +45,7 @@
 		<div class="modal-footer"></div>
 	</div>
 </form>
-<script type="text/javascript"  src="{{asset('js/jquery.min.js')}}" ></script>
+
 <script>
 	$(document).ready(function() {
 		$('#salvar-tarefa').click(function() {
