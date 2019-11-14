@@ -45,21 +45,3 @@
 		<div class="modal-footer"></div>
 	</div>
 </form>
-
-<script>
-	$(document).ready(function() {
-		$('#salvar-tarefa').click(function() {
-			
-			if ($('#nome').val() == '') {
-				modalValidacao("O campo Nome é obrigatório!"); 
-				return false;
-			}  else if ($('#status_id').val() == '') {
-				modalValidacao("O campo Segmento é obrigatório!"); 
-				return false;
-			} else {
-				return true;
-			}
-
-		});
-	});
-</script>
