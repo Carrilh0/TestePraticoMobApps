@@ -1,22 +1,18 @@
 # Teste prático para a vaga de estágio MobApps
 
-O tema proposto para o projeto foi o desenvolvimento de um gerenciador de tarefas para o usuário. Utilizei o padrão Kanban com a facilidade de arrastar e soltar as tarefas entre os quadros!
-
-## Servidor 
-
-Para facilitar o acesso e visualização do sistema, disponibilizei o mesmo em um servidor: http://tarefas.duckdns.org
-
-## Tela de login
-
-![Login](ImagensDoc/Login.png)  
+O tema proposto para o projeto foi o desenvolvimento de um gerenciador de tarefas para o usuário. Utilizei o padrão Kanban com a facilidade de arrastar e soltar as tarefas entre os quadros!  
+Para facilitar o acesso e visualização do sistema, disponibilizei o mesmo em um servidor: http://tarefas.duckdns.org  
 ##### Usuário padrão:
 E-mail: admin@admin.com  
 Senha: admin  
 
+## Tela de login
+
+![Login](ImagensDoc/Login.png)  
+
 ## Tela principal 
 
 ![Atividades](ImagensDoc/Atividades.png)    
-Possibilidade de arrastar a tarefar e mudar o status
 
 # Etapas necessarias para a execução do projeto
 
