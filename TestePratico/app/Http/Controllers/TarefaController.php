@@ -60,6 +60,11 @@ class TarefaController extends Controller
         $tarefa = $this->tarefaRepository->tarefaPorId($this->request->id);
         $dados = $this->request->all();
 
+        $validate = $this->tarefaValidation->cadastrarValidation($dados);
+        if ($validate->fails()) {
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
+
         $this->tarefaRepository->update($tarefa,$dados);
 
         return redirect()->back();
