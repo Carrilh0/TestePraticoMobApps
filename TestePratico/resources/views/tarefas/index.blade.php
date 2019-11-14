@@ -30,11 +30,17 @@
             box-shadow: silver 1px 2px 1px;
             color: #666666;
         }
+
+        .my-card-body {
+            background:#e2e4e6;
+            overflow-y:scroll;
+            height:400px
+        }
     </style>
 
 </head>
 
-<body>
+<body scroll="no">
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,7 +80,7 @@
                         <div class="card-header border-warning mb-3" style="background:#fbbb51">
                             A fazer
                         </div>
-                        <div class="card-body sortable" id="1" style="background:#e2e4e6">
+                        <div class="card-body sortable my-card-body" id="1" style="background:#e2e4e6">
                             <tbody>
                                 @foreach ($tarefasAFazer as $tarefa)
                                 <div class="col-md 12 mini-card" id="{{$tarefa->id}}">
@@ -98,7 +104,7 @@
                         <div class="card-header border-primary mb-3" style="background:#51d2fc">
                             Tarefas em andamento
                         </div>
-                        <div class="card-body sortable" id="2" style="background:#e2e4e6">
+                        <div class="card-body sortable my-card-body" id="2" style="background:#e2e4e6">
                             @foreach ($tarefasEmAndamento as $tarefa)
                             <div class="col-md 12 mini-card" id="{{$tarefa->id}}">
                                 {{$tarefa->nome}} <br>
@@ -120,7 +126,7 @@
                         <div class="card-header border-success mb-3" style="background:#7edda3">
                             Tarefas concluidas
                         </div>
-                        <div class="card-body sortable" id="3" style="background:#e2e4e6">
+                        <div class="card-body sortable my-card-body" id="3" style="background:#e2e4e6">
                             @foreach ($tarefasConcluidas as $tarefa)
                             <div class="col-md 12 mini-card" id="{{$tarefa->id}}">
                                 <strike>{{$tarefa->nome}} <br>
@@ -223,14 +229,13 @@
                 cursor: "move",
                 
                 stop: function( event, ui ) {
-                     console.log(ui.item[0].parentElement.id);
-                     console.log(ui.item[0].id);
+
                      $.ajax({
                          url: '/ajax/editarArrastar/'+ui.item[0].id+'/'+ui.item[0].parentElement.id,
                          type: 'get',
                          
                          success: function(data) {
-                            location.reload('3')
+                            location.reload()
                          }
                      });
                 }
